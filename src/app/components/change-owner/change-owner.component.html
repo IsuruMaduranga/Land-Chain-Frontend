@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <div class="crd">
+          <!-- Material form login -->
+          <mdb-card>
+  
+            <mdb-card-header class="danger-color white-text text-center py-4">
+              <h5>
+                <strong>Change Owner</strong>
+              </h5>
+            </mdb-card-header>
+  
+  
+            <!--Card content-->
+            <mdb-card-body class="px-lg-5 pt-0">
+  
+              <!-- Form -->
+              <form class="text-center" style="color: #757575;" (ngSubmit)="onSubmit()">
+  
+                <!-- Land id -->
+                <div class="md-form">
+                  <input type="text" name="landId" id="materialLoginFormEmail" class="form-control" mdbInput
+                  [(ngModel)]="landId">
+                  <label for="materialLoginFormEmail">Land ID</label>
+                </div>
+
+                <!-- Land id -->
+                <div class="md-form">
+                    <input type="text" name="newOwnerId" id="materialLoginFormEmail" class="form-control" mdbInput
+                    [(ngModel)]="newOwnerId">
+                    <label for="materialLoginFormEmail">New owner NIC</label>
+                </div>
+  
+                <!-- Register button-->
+                <button mdbBtn color="danger" block="true" class="my-4" type="submit">Change</button>
+                <!-- Register -->
+  
+              </form>
+              <!-- Form -->
+  
+            </mdb-card-body>
+  
+          </mdb-card>
+          <!-- Material form login -->
+  
+        </div>
+  
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+  </div>

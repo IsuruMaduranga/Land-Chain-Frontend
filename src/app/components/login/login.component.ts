@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     this.authService.auth(logindata).subscribe(res=>{
       console.log(res);
       if(res.token){
-        localStorage.setItem('lctoken',res.token);
+        localStorage.setItem('token',res.token);
       }else{
         alert('Invalid credentials');
       }

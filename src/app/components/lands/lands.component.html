@@ -1,3 +1,13 @@
-<p>
-  lands works!
-</p>
+<div class="container">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <ul class="list-group">
+          <div *ngFor="let land of lands">
+              <li class="list-group-item list-group-item-success">id:{{land.id}} owner:{{land.owner}}</li>
+          </div>
+        </ul>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+  </div>

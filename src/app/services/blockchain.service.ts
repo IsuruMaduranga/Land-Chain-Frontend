@@ -13,14 +13,17 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class LandRegistrationService {
+export class BlockchainService {
 
   constructor(private http:HttpClient) { }
 
-  url = 'http://localhost:4000/api/blockchain/registerLand';
+  getUsers():Observable<any>{
+    let url = 'http://localhost:4000/api/blockchain/users';
+    return this.http.get(url,httpOptions);
+  }
 
-  register(userData:any):Observable<any>{
-    let data=JSON.stringify(userData);
-    return this.http.post(this.url,data,httpOptions);
+  getLands():Observable<any>{
+    let url = 'http://localhost:4000/api/blockchain/lands';
+    return this.http.get(url,httpOptions);
   }
 }

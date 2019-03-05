@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
@@ -13,11 +12,11 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class LandRegistrationService {
+export class UserRegistrationService {
+
+  url = 'http://localhost:4000/api/blockchain/registerUser';
 
   constructor(private http:HttpClient) { }
-
-  url = 'http://localhost:4000/api/blockchain/registerLand';
 
   register(userData:any):Observable<any>{
     let data=JSON.stringify(userData);
