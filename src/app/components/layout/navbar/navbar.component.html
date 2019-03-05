@@ -11,13 +11,16 @@
             <!-- Links -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link waves-light" mdbWavesEffect>Home<span class="sr-only">(current)</span></a>
+                    <a class="nav-link waves-light" routerLink="/userRegistration" mdbWavesEffect>User-Registration<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link waves-light" mdbWavesEffect>Features</a>
+                    <a class="nav-link waves-light" routerLink="/landRegistration" mdbWavesEffect>Land-Registration</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link waves-light" mdbWavesEffect>Pricing</a>
+                    <a class="nav-link waves-light" routerLink="/users" mdbWavesEffect>Users</a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link waves-light" routerLink="/lands" mdbWavesEffect>Lands</a>
                 </li>
             </ul>
       
@@ -28,8 +31,9 @@
                           <mdb-icon fas icon="user"></mdb-icon><span class="caret"></span></a>
                     <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
                         <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/login">Login</a>
+                        <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/signup">Signup</a>
                         <div class="divider dropdown-divider"></div>
-                        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>
+                        <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/logout">Logout</a>
                     </div>
                 </li>
             </ul>
