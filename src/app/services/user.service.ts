@@ -33,11 +33,20 @@ export class UserService {
     return this.http.post(url,JSON.stringify(userData),httpOptions);
   }
 
+  logout():Observable<any>{
+    let url = 'http://localhost:4000/api/users/logout';
+    return this.http.get(url,httpOptions);
+  }
+
+
   get user():any{
     let output;
     let token = localStorage.getItem('token');
     if(!token){
       output = null;
+    }else if(this.jwtHelper.isTokenExpired()){
+      output=null;
+      localStorage.removeItem('token');
     }else{
       output = this.jwtHelper.decodeToken(token).type;
     }
