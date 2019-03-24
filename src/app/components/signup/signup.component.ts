@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { UserService } from '../../services/user.service';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -14,7 +16,7 @@ export class SignupComponent implements OnInit {
   email:string;
   password:string;
 
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService, private router:Router) { }
 
   ngOnInit() {
   }
@@ -33,8 +35,9 @@ export class SignupComponent implements OnInit {
       console.log(res);
       if(res.token){
         localStorage.setItem('token',res.token);
+        this.router.navigate(['/']);
       }else{
-        alert("done");
+        alert("Error!");
       }
     });
   }

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,10 @@ import { UsersComponent } from './components/users/users.component';
 import { LandsComponent } from './components/lands/lands.component';
 import { ChangeOwnerComponent } from './components/change-owner/change-owner.component';
 import { AdminRegistrationComponent } from './components/admin-registration/admin-registration.component';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -38,7 +43,15 @@ import { AdminRegistrationComponent } from './components/admin-registration/admi
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        headerName: 'x-auth',
+        whitelistedDomains: ['localhost:4000'],
+        blacklistedRoutes: ['example.com/examplebadroute/']
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

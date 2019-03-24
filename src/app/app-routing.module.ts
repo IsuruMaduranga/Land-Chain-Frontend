@@ -21,7 +21,8 @@ const routes: Routes = [
   {path:'users',component:UsersComponent},
   {path:'lands',component:LandsComponent},
   {path:'changeOwner',component:ChangeOwnerComponent},
-  {path:'adminRegistration',component:AdminRegistrationComponent}
+  {path:'adminRegistration',component:AdminRegistrationComponent},
+  { path: '**', component: HomeComponent }
 ];
 
 @NgModule({

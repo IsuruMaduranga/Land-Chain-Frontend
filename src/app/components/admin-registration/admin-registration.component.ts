@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-registration',
@@ -15,7 +16,7 @@ export class AdminRegistrationComponent implements OnInit {
   email:string;
   password:string;
 
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService, private router:Router) { }
 
   ngOnInit() {
   }
@@ -30,12 +31,13 @@ export class AdminRegistrationComponent implements OnInit {
       password:this.password
     }
 
-    this.userService.signup(userData).subscribe(res=>{
+    this.userService.registerAdmin(userData).subscribe(res=>{
       console.log(res);
       if(res.token){
-        localStorage.setItem('token',res.token);
+        alert("Done");
+        this.router.navigate(['/adminRegistration']);
       }else{
-        alert("done");
+        alert("Error");
       }
     });
   }
