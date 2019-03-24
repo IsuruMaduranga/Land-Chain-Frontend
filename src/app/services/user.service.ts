@@ -40,7 +40,6 @@ export class UserService {
       output = null;
     }else{
       output = this.jwtHelper.decodeToken(token).type;
-      console.log(output);
     }
     return output;
   }
