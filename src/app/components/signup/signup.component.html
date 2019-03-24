@@ -16,20 +16,20 @@
           <mdb-card-body class="px-lg-5 pt-0">
 
             <!-- Form -->
-            <form class="text-center" style="color: #757575;">
+            <form class="text-center" style="color: #757575;" (ngSubmit)="onSubmit()">
 
               <div class="form-row">
                 <div class="col">
                   <!-- First name -->
                   <div class="md-form">
-                    <input type="text" id="materialRegisterFormFirstName" class="form-control" mdbInput>
+                    <input type="text" id="materialRegisterFormFirstName" class="form-control" mdbInput [(ngModel)]="firstName" name="firstName">
                     <label for="materialRegisterFormFirstName">First name</label>
                   </div>
                 </div>
                 <div class="col">
                   <!-- Last name -->
                   <div class="md-form">
-                    <input type="email" id="materialRegisterFormLastName" class="form-control" mdbInput>
+                    <input type="email" id="materialRegisterFormLastName" class="form-control" mdbInput [(ngModel)]="lastName" name="lastName">
                     <label for="materialRegisterFormLastName">Last name</label>
                   </div>
                 </div>
@@ -37,20 +37,20 @@
 
               <!-- NIC -->
               <div class="md-form mt-0">
-                <input type="text" id="materialRegisterFormEmail" class="form-control" mdbInput>
+                <input type="text" id="materialRegisterFormEmail" class="form-control" mdbInput [(ngModel)]="nic" name="nic">
                 <label for="materialRegisterFormEmail">NIC</label>
               </div>
 
               <!-- E-mail -->
               <div class="md-form mt-0">
-                <input type="email" id="materialRegisterFormEmail" class="form-control" mdbInput>
+                <input type="email" id="materialRegisterFormEmail" class="form-control" mdbInput [(ngModel)]="email" name="email">
                 <label for="materialRegisterFormEmail">E-mail</label>
               </div>
 
               <!-- Password -->
               <div class="md-form">
                 <input type="password" id="materialRegisterFormPassword" class="form-control"
-                  aria-describedby="materialRegisterFormPasswordHelpBlock" mdbInput>
+                  aria-describedby="materialRegisterFormPasswordHelpBlock" mdbInput [(ngModel)]="password" name="password">
                 <label for="materialRegisterFormPassword">Password</label>
                 <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
                   At least 8 characters and 1 digit

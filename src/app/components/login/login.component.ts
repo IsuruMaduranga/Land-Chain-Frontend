@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { LoginData } from '../../models/LoginData';
 
-import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -14,14 +14,14 @@ export class LoginComponent implements OnInit {
   nic:string;
   password:string;
 
-  constructor(private authService:AuthService) { }
+  constructor(private userService:UserService) { }
 
   ngOnInit() {
   }
 
   onSubmit(){
     const logindata = new LoginData(this.nic,this.password);
-    this.authService.auth(logindata).subscribe(res=>{
+    this.userService.auth(logindata).subscribe(res=>{
       console.log(res);
       if(res.token){
         localStorage.setItem('token',res.token);

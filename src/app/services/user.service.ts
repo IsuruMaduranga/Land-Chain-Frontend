@@ -13,13 +13,19 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class UserService {
 
-  url = 'http://localhost:4000/api/users/login';
-
+  
   constructor(private http:HttpClient) { }
 
   auth(loginData:LoginData):Observable<any>{
-    return this.http.post(this.url,JSON.stringify(loginData),httpOptions);
+    let url = 'http://localhost:4000/api/users/login';
+    return this.http.post(url,JSON.stringify(loginData),httpOptions);
   }
+
+  signup(userData:any):Observable<any>{
+    let url = 'http://localhost:4000/api/users/signup';
+    return this.http.post(url,JSON.stringify(userData),httpOptions);
+  }
+
 }
