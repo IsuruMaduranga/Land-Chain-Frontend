@@ -32,7 +32,6 @@ export class AdminRegistrationComponent implements OnInit {
     }
 
     this.userService.registerAdmin(userData).subscribe(res=>{
-      console.log(res);
       if(res.token){
         alert("Done");
         this.router.navigate(['/adminRegistration']);
