@@ -9,6 +9,7 @@ import { LandRegistrationComponent } from './components/land-registration/land-r
 import { UsersComponent } from './components/users/users.component';
 import { LandsComponent } from './components/lands/lands.component';
 import { ChangeOwnerComponent } from './components/change-owner/change-owner.component';
+import { AdminRegistrationComponent } from './components/admin-registration/admin-registration.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'landRegistration',component:LandRegistrationComponent},
   {path:'users',component:UsersComponent},
   {path:'lands',component:LandsComponent},
-  {path:'changeOwner',component:ChangeOwnerComponent}
+  {path:'changeOwner',component:ChangeOwnerComponent},
+  {path:'adminRegistration',component:AdminRegistrationComponent}
 ];
 
 @NgModule({

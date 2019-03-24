@@ -16,6 +16,7 @@ import { LandRegistrationComponent } from './components/land-registration/land-r
 import { UsersComponent } from './components/users/users.component';
 import { LandsComponent } from './components/lands/lands.component';
 import { ChangeOwnerComponent } from './components/change-owner/change-owner.component';
+import { AdminRegistrationComponent } from './components/admin-registration/admin-registration.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ChangeOwnerComponent } from './components/change-owner/change-owner.com
     LandRegistrationComponent,
     UsersComponent,
     LandsComponent,
-    ChangeOwnerComponent
+    ChangeOwnerComponent,
+    AdminRegistrationComponent
   ],
   imports: [
     BrowserModule,

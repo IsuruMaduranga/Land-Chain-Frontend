@@ -28,4 +28,9 @@ export class UserService {
     return this.http.post(url,JSON.stringify(userData),httpOptions);
   }
 
+  registerAdmin(userData:any):Observable<any>{
+    let url = 'http://localhost:4000/api/users/registerAdmin';
+    return this.http.post(url,JSON.stringify(userData),httpOptions);
+  }
+
 }
