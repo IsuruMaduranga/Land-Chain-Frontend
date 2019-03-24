@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
@@ -16,12 +17,12 @@ const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
-  {path:'userRegistration',component:UserRegistrationComponent},
-  {path:'landRegistration',component:LandRegistrationComponent},
-  {path:'users',component:UsersComponent},
-  {path:'lands',component:LandsComponent},
-  {path:'changeOwner',component:ChangeOwnerComponent},
-  {path:'adminRegistration',component:AdminRegistrationComponent},
+  {path:'userRegistration',component:UserRegistrationComponent,canActivate: [AuthGuard],data: { expectedRole: ['admin']} },
+  {path:'landRegistration',component:LandRegistrationComponent,canActivate: [AuthGuard],data: { expectedRole: ['admin']}},
+  {path:'users',component:UsersComponent,canActivate: [AuthGuard],data: { expectedRole: ['admin']}},
+  {path:'lands',component:LandsComponent,canActivate: [AuthGuard],data: { expectedRole: ['admin','user']}},
+  {path:'changeOwner',component:ChangeOwnerComponent,canActivate: [AuthGuard],data: { expectedRole: ['admin']}},
+  {path:'adminRegistration',component:AdminRegistrationComponent,canActivate: [AuthGuard],data: { expectedRole: ['admin']}},
   { path: '**', component: HomeComponent }
 ];
 
