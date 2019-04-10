@@ -7,16 +7,12 @@
               <li class="list-group-item list-group-item-success">
                 id:  {{land.id}}
                 <br/>
-                owner:  {{land.owner.slice(-10,-1)}}
-                <br/>
                 registered time: {{land.regTime}}
-                <br/>
-                status: {{land.status}}
               </li>
           </div>
           <div *ngIf="lands === undefined || lands.length == 0" >
             <div class="alert alert-danger" role="alert">
-              No registered lands!
+              You have no registered lands!
             </div>
           </div>
         </ul>

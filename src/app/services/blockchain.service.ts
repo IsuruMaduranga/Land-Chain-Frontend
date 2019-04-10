@@ -27,6 +27,11 @@ export class BlockchainService {
     return this.http.get(url,httpOptions);
   }
 
+  getLandsOfUser():Observable<any>{
+    let url = 'http://localhost:4000/api/blockchain/landsOfUser';
+    return this.http.get(url,httpOptions);
+  }
+
   changeOwner(ownerData:any):Observable<any>{
     let url = 'http://localhost:4000/api/blockchain/changeOwner';
     let data=JSON.stringify(ownerData);
@@ -44,5 +49,7 @@ export class BlockchainService {
     let data=JSON.stringify(userData);
     return this.http.post(url,data,httpOptions);
   }
+
+  
 
 }

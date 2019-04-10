@@ -6,6 +6,11 @@
         <div *ngFor="let user of users">
             <li class="list-group-item list-group-item-success">{{user.NIC}}</li>
         </div>
+        <div *ngIf="users === undefined || users.length == 0" >
+          <div class="alert alert-danger" role="alert">
+            No registered users!
+          </div>
+        </div>
       </ul>
     </div>
     <div class="col-md-3"></div>

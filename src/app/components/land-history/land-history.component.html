@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div>
+          <form class="form-inline md-form mr-auto mb-4">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+              <button mdbBtn size="sm" color="warning" outline="true" rounded="true" class="my-0 waves-light"
+                mdbWavesEffect type="submit">Search</button>
+          </form>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <ul class="list-group">
+        <div *ngFor="let land of lands">
+            <li class="list-group-item list-group-item-success">
+              owner:  {{land.owner.slice(-10,-1)}}
+            </li>
+        </div>
+        <div *ngIf="lands === undefined || lands.length == 0" >
+          <div class="alert alert-danger" role="alert">
+            No registered lands!
+          </div>
+        </div>
+      </ul>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>

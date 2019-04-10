@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <!-- Material form register -->
+      <div class="crd">
+        <mdb-card>
+
+          <mdb-card-header class="info-color white-text text-center py-4">
+            <h5>
+              <strong>Create Advertisment</strong>
+            </h5>
+          </mdb-card-header>
+
+          <!--Card content-->
+          <mdb-card-body class="px-lg-5 pt-0">
+
+            <!-- Form -->
+            <form class="text-center" style="color: #757575;" (ngSubmit)="onSubmit()">
+
+              
+                <div class="md-form mt-0">
+                  <!-- Land Id -->
+                  <div class="md-form">
+                    <input type="text" id="materialRegisterFormFirstName" class="form-control" mdbInput [(ngModel)]="landId" name="landId">
+                    <label for="materialRegisterFormFirstName">Land ID</label>
+                  </div>
+                </div>
+
+                <div class="md-form mt-0">
+                  <!-- Size -->
+                  <div class="md-form">
+                    <input type="text" id="materialRegisterFormLastName" class="form-control" mdbInput [(ngModel)]="size" name="size">
+                    <label for="materialRegisterFormLastName">Land size in perchs(Use whole numbers only)</label>
+                  </div>
+                </div>
+              
+
+              <!-- Phone -->
+              <div class="md-form mt-0">
+                <input type="text" id="materialRegisterFormEmail" class="form-control" mdbInput [(ngModel)]="phone" name="phone">
+                <label for="materialRegisterFormEmail">Contact Number</label>
+              </div>
+
+              <!-- Price -->
+              <div class="md-form mt-0">
+                <input type="text" id="materialRegisterFormEmail" class="form-control" mdbInput [(ngModel)]="price" name="price">
+                <label for="materialRegisterFormEmail">Price in USD</label>
+              </div>
+
+              <!-- Address -->
+              <div class="md-form mt-0">
+                <textarea type="text" id="form7" class="md-textarea md-textarea-auto form-control" mdbInput [(ngModel)]="address" name="address"></textarea>
+                <label for="form7">Address</label>
+              </div>
+
+              <!-- Description -->
+              <div class="md-form mt-0">
+                <textarea type="text" id="form7" class="md-textarea md-textarea-auto form-control" mdbInput [(ngModel)]="description" name="description"></textarea>
+                <label for="form7">Description</label>
+              </div>
+
+              <!-- Sign up button -->
+              <button mdbBtn color="info" outline="true" rounded="true" block="true" class="my-4 waves-effect z-depth-0"
+                mdbWavesEffect type="submit">Create AD</button>
+              <hr>
+
+              <!-- Terms of service -->
+              <p>By clicking
+                <em>Create Ad</em> you agree to our
+                <a href="" target="_blank">Terms of service</a> and
+                <a href="" target="_blank">Conditions</a>. </p>
+
+            </form>
+            <!-- Form -->
+
+          </mdb-card-body>
+
+        </mdb-card>
+        <!-- Material form register -->
+      </div>
+
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>

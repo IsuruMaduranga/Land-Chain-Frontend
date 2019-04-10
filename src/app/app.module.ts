@@ -18,6 +18,10 @@ import { UsersComponent } from './components/users/users.component';
 import { LandsComponent } from './components/lands/lands.component';
 import { ChangeOwnerComponent } from './components/change-owner/change-owner.component';
 import { AdminRegistrationComponent } from './components/admin-registration/admin-registration.component';
+import { MyLandsComponent } from './components/my-lands/my-lands.component';
+import { CreateAdComponent } from './components/create-ad/create-ad.component';
+import { LandHistoryComponent } from './components/land-history/land-history.component';
+import { AdsComponent } from './components/ads/ads.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -36,7 +40,11 @@ export function tokenGetter() {
     UsersComponent,
     LandsComponent,
     ChangeOwnerComponent,
-    AdminRegistrationComponent
+    AdminRegistrationComponent,
+    MyLandsComponent,
+    CreateAdComponent,
+    LandHistoryComponent,
+    AdsComponent
   ],
   imports: [
     BrowserModule,

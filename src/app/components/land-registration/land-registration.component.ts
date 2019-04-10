@@ -10,6 +10,7 @@ import { LandRegistrationService } from '../../services/land-registration.servic
 export class LandRegistrationComponent implements OnInit {
   landId:string;
   ownerNIC:string;
+  size:Number;
 
   constructor(private lrService:LandRegistrationService) { }
 
@@ -19,7 +20,7 @@ export class LandRegistrationComponent implements OnInit {
   onSubmit(){
     const landData = {
       id:this.landId,
-      ownerId:this.ownerNIC
+      ownerId:this.ownerNIC,
     }
 
     this.lrService.register(landData).subscribe(res=>{
