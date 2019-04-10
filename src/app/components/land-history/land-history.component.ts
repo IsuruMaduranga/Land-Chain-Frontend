@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { BlockchainService } from 'src/app/services/blockchain.service';
+
+import { NgFlashMessageService } from 'ng-flash-messages';
+import { LandsComponent } from '../lands/lands.component';
 
 @Component({
   selector: 'app-land-history',
@@ -6,10 +10,42 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./land-history.component.scss']
 })
 export class LandHistoryComponent implements OnInit {
+  landId:String;
+  lands:any[];
+  previousLand:String;
+  currentOwner:String;
 
-  constructor() { }
+  constructor(private bService:BlockchainService,private ngf: NgFlashMessageService) { }
 
   ngOnInit() {
+  }
+
+  onSubmit(){
+    const data = {
+      landId:this.landId,
+    }
+
+    this.bService.getLandHistory(data).subscribe(res=>{
+      this.previousLand = null;
+      this.lands = null;
+      this.currentOwner = null;
+      if(res.error){
+        this.ngf.showFlashMessage({
+          messages: ["History not available!"], 
+          dismissible: true, 
+          timeout: 2000,
+          type: 'danger'
+        });
+      }else{
+        this.lands=res;
+        if(this.lands[0].previousLand){
+          this.previousLand=this.lands[0].previousLand.split("#")[1];
+        }
+        if(this.lands[this.lands.length-1].status === "VALID"){
+          this.currentOwner=this.lands[this.lands.length-1].owner.split("#")[1];
+        }
+      }
+    });
   }
 
 }

@@ -1,13 +1,15 @@
 <div class="container">
   <div class="row">
+
     <div class="col-md-3"></div>
     <div class="col-md-6">
       <div>
-          <form class="form-inline md-form mr-auto mb-4">
-              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-              <button mdbBtn size="sm" color="warning" outline="true" rounded="true" class="my-0 waves-light"
-                mdbWavesEffect type="submit">Search</button>
-          </form>
+        <form class="form-inline md-form mr-auto mb-4" (ngSubmit)="onSubmit()">
+          <input class=" form-control mr-sm-2" type="text" placeholder="Land-ID" aria-label="Land-ID"
+            [(ngModel)]="landId" name="landId">
+          <button mdbBtn size="sm" color="blue" outline="true" rounded="true" class="my-0 waves-light" mdbWavesEffect
+            type="submit">Get History</button>
+        </form>
       </div>
     </div>
     <div class="col-md-3"></div>
@@ -15,19 +17,44 @@
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-      <ul class="list-group">
-        <div *ngFor="let land of lands">
-            <li class="list-group-item list-group-item-success">
-              owner:  {{land.owner.slice(-10,-1)}}
-            </li>
+
+      <ng-flash-message></ng-flash-message>
+
+      <div *ngIf="previousLand">
+        <div class="alert alert-danger" role="alert">
+          This land is divided from Land No-{{previousLand}}.
+          <br />
+          Search for Land No-{{previousLand}} to get more history.
         </div>
-        <div *ngIf="lands === undefined || lands.length == 0" >
-          <div class="alert alert-danger" role="alert">
-            No registered lands!
+      </div>
+
+      <ul class="list-group">
+        <div *ngIf="lands">
+          <div *ngIf="!previousLand">
+            <li class="list-group-item list-group-item-danger">
+              End of History!
+            </li>
           </div>
         </div>
+        <div *ngFor="let land of lands;index as i">
+          <li class="list-group-item list-group-item-success" *ngIf="land.status!=='DIVIDED'">
+            owner {{i+1}} --> {{land.owner.slice(-10,-1)}}V
+            <br />
+            registered time: {{land.regTime}}
+          </li>
+        </div>
       </ul>
+
+      <div *ngIf="currentOwner">
+          <div class="alert alert-danger" role="alert">
+            Current owner is {{currentOwner}}
+            <br/>
+            End of History!
+          </div>
+      </div>
+
     </div>
+
     <div class="col-md-3"></div>
   </div>
 </div>

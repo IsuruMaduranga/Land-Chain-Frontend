@@ -13,6 +13,7 @@ import { ChangeOwnerComponent } from './components/change-owner/change-owner.com
 import { AdminRegistrationComponent } from './components/admin-registration/admin-registration.component';
 import { MyLandsComponent } from './components/my-lands/my-lands.component';
 import { CreateAdComponent } from './components/create-ad/create-ad.component';
+import { LandHistoryComponent } from './components/land-history/land-history.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path:'adminRegistration',component:AdminRegistrationComponent,canActivate: [AuthGuard],data: { expectedRole: ['admin']}},
   {path:'myLands',component:MyLandsComponent,canActivate: [AuthGuard],data: { expectedRole: ['user']}},
   {path:'createAd',component:CreateAdComponent,canActivate: [AuthGuard],data: { expectedRole: ['user']}},
+  {path:'landHistory',component:LandHistoryComponent,canActivate: [AuthGuard],data: { expectedRole: ['admin','user']}},
   { path: '**', component: HomeComponent }
 ];
 

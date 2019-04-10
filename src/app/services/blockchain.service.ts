@@ -49,7 +49,12 @@ export class BlockchainService {
     let data=JSON.stringify(userData);
     return this.http.post(url,data,httpOptions);
   }
-
+  
+  getLandHistory(userData:any):Observable<any>{
+    let url = 'http://localhost:4000/api/blockchain/landHistory';
+    let data=JSON.stringify(userData);
+    return this.http.post(url,data,httpOptions);
+  }
   
 
 }
