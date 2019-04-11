@@ -12,9 +12,8 @@ export class CreateAdComponent implements OnInit {
   landId:String;
   size:String;
   phone:String;
-  price:String
-  description:String;
-  address:String;
+  price:String;
+  city:String;
 
 
   constructor(private adService:AdvertismentService, private router:Router) { }
@@ -29,8 +28,7 @@ export class CreateAdComponent implements OnInit {
       size:this.size,
       phone:this.phone,
       price:this.price,
-      description:this.description,
-      address:this.address
+      city:this.city
     }
 
     this.adService.postAd(adData).subscribe(res=>{

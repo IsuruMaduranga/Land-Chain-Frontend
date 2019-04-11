@@ -1,6 +1,13 @@
+<div *ngIf="!this.userService.user">
+  <app-login></app-login>
+</div>
 
-<div>
-    <p>
-        Land Chain - The blockchain based land selling application
-    </p>
+<div *ngIf="this.userService.user==='user'">
+  <app-ads></app-ads>
+</div>
+
+<div *ngIf="this.userService.user==='admin'">
+  <div class="admin">
+      <h1>Admin Panel</h1>
+  </div>
 </div>

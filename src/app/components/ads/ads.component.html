@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+
+    <div *ngFor="let ad of ads">
+
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="assets/land.jpg" alt="Card image cap">
+        <div class="card-body">
+            
+          <h3 class="card-title">{{ad.city}}</h3>
+          <h5 class="card-title">{{ad.size}} perchs</h5>
+          <h5 class="card-title">{{ad.price}}$</h5>
+          <p class="card-text">Land ID:{{ad.landId}}</p>
+          <p class="card-text">Owner:{{ad.ownerId}}</p>
+          <p class="card-text">{{ad.description}}</p>
+          <p class="card-text">Call {{ad.phone}} for more info</p>
+
+          <a href="#" class="btn btn-primary">Buy</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
