@@ -36,6 +36,11 @@ export class CreateAdComponent implements OnInit {
         alert(res.msg);
       }else{
         alert('done');
+        this.landId = null;
+        this.size = null;
+        this.phone = null;
+        this.price = null;
+        this.city = null;
       }
     });
   }

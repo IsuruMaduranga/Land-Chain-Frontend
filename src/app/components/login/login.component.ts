@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     const logindata = new LoginData(this.nic,this.password);
     this.userService.auth(logindata).subscribe(res=>{
-      console.log(res);
       if(res.token){
         localStorage.setItem('token',res.token);
         this.router.navigate(['/']);

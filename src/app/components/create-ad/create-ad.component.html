@@ -16,58 +16,64 @@
           <mdb-card-body class="px-lg-5 pt-0">
 
             <!-- Form -->
-            <form class="text-center" style="color: #757575;" (ngSubmit)="onSubmit()">
+            <form style="color: #757575;" (ngSubmit)="onSubmit()" #f="ngForm">
 
-
-              <div class="md-form mt-0">
-                <!-- Land Id -->
-                <div class="md-form">
-                  <input type="text" id="materialRegisterFormFirstName" class="form-control" mdbInput
-                    [(ngModel)]="landId" name="landId">
-                  <label for="materialRegisterFormFirstName">Land ID</label>
+              <!-- Land Id -->
+              <div class="form-group">
+                <label for="id">Land ID</label>
+                <input type="text" id="id" class="form-control" mdbInput [(ngModel)]="landId" name="landId"
+                  #id="ngModel" required pattern="^[0-9]+$">
+                <div class="form-text text-danger" *ngIf="id.touched && !id.valid">
+                  <small *ngIf="id.errors.required">Land ID is required!</small>
+                  <small *ngIf="id.errors.pattern">ID should contains only numbers!</small>
                 </div>
               </div>
 
-              <div class="md-form mt-0">
-                <!-- Size -->
-                <div class="md-form">
-                  <input type="text" id="materialRegisterFormLastName" class="form-control" mdbInput [(ngModel)]="size"
-                    name="size">
-                  <label for="materialRegisterFormLastName">Land size in perchs(Use whole numbers only)</label>
+              <!-- Size -->
+              <div class="form-group">
+                <label for="size1">Land size in perchs(Use whole numbers only)</label>
+                <input type="text" id="size1" class="form-control" mdbInput [(ngModel)]="size" name="size"
+                  #size1="ngModel" required pattern="^[0-9]+$">
+                <div class="form-text text-danger" *ngIf="size1.touched && !size1.valid">
+                  <small *ngIf="size1.errors.required">Size is required!</small>
+                  <small *ngIf="size1.errors.pattern">Size should contains only numbers!</small>
                 </div>
               </div>
-
 
               <!-- Phone -->
-              <div class="md-form mt-0">
-                <input type="text" id="materialRegisterFormEmail" class="form-control" mdbInput [(ngModel)]="phone"
-                  name="phone">
-                <label for="materialRegisterFormEmail">Contact Number</label>
+              <div class="form-group">
+                <label for="phone1">Contact Number</label>
+                <input type="text" id="phone1" class="form-control" mdbInput [(ngModel)]="phone" name="phone"
+                  #phone1="ngModel" required pattern="^[0-9]{10}$">
+                <div class="form-text text-danger" *ngIf="phone1.touched && !phone1.valid">
+                  <small *ngIf="phone1.errors.required">Contact number is required!</small>
+                  <small *ngIf="phone1.errors.pattern">Invalid phone number!</small>
+                </div>
               </div>
 
               <!-- Price -->
-              <div class="md-form mt-0">
-                <input type="text" id="materialRegisterFormEmail" class="form-control" mdbInput [(ngModel)]="price"
-                  name="price">
-                <label for="materialRegisterFormEmail">Price in USD</label>
+              <div class="form-group">
+                <label for="price1">Price in LKR</label>
+                <input type="text" id="price1" class="form-control" mdbInput [(ngModel)]="price" name="price"
+                  #price1="ngModel" required pattern="^[0-9]+$">
+                <div class="form-text text-danger" *ngIf="price1.touched && !price1.valid">
+                  <small *ngIf="price1.errors.required">Price is required!</small>
+                  <small *ngIf="price1.errors.pattern">Invalid price!</small>
+                </div>
               </div>
 
               <!-- City -->
-              <div class="md-form mt-0">
-                <input type="text" id="form7" class="form-control" mdbInput [(ngModel)]="city" name="city">
-                <label for="form7">City</label>
+              <div class="form-group">
+                <label for="city1">City</label>
+                <input type="text" id="city1" class="form-control" mdbInput [(ngModel)]="city" name="city" #city1="ngModel" required pattern="^[A-Za-z]+$">
+                <div class="form-text text-danger" *ngIf="city1.touched && !city1.valid">
+                  <small *ngIf="city1.errors.required">City is required!</small>
+                  <small *ngIf="city1.errors.pattern">Invalid city!</small>
+                </div>
               </div>
 
               <!-- Sign up button -->
-              <button mdbBtn color="info" outline="true" rounded="true" block="true" class="my-4 waves-effect z-depth-0"
-                mdbWavesEffect type="submit">Create AD</button>
-              <hr>
-
-              <!-- Terms of service -->
-              <p>By clicking
-                <em>Create Ad</em> you agree to our
-                <a href="" target="_blank">Terms of service</a> and
-                <a href="" target="_blank">Conditions</a>. </p>
+              <button mdbBtn color="info" block="true" class="my-4" type="submit" [disabled]="!f.valid">Create AD</button>
 
             </form>
             <!-- Form -->
