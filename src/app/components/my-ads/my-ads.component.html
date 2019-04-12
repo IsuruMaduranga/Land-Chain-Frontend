@@ -1,5 +1,23 @@
 <div class="container">
+
   <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div *ngIf="ads === undefined || ads.length == 0">
+        <div class="alert alert-danger" role="alert">
+          You have no posted Ads
+        </div>
+      </div>
+      <div class="flash">
+        <ng-flash-message></ng-flash-message>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+
+  <div class="row">
+
+
 
     <div *ngFor="let ad of ads">
 
@@ -17,7 +35,7 @@
 
           <h5 class="card-title">Ad status --> {{ad.status}}</h5>
 
-          <a href="#" class="btn btn-primary">Delete</a>
+          <button (click)="delete(ad._id)" class="btn btn-primary" [disabled]="!ad.status==='active'">Delete</button>
 
 
         </div>

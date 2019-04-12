@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AdvertismentService } from 'src/app/services/advertisment.service';
 import { Router } from '@angular/router';
+import { AdService } from 'src/app/services/ad.service';
 
 @Component({
   selector: 'app-create-ad',
@@ -16,7 +16,7 @@ export class CreateAdComponent implements OnInit {
   city:String;
 
 
-  constructor(private adService:AdvertismentService, private router:Router) { }
+  constructor(private adService:AdService, private router:Router) { }
 
   ngOnInit() {
   }
@@ -31,7 +31,7 @@ export class CreateAdComponent implements OnInit {
       city:this.city
     }
 
-    this.adService.postAd(adData).subscribe(res=>{
+    this.adService.post(adData).subscribe(res=>{
       if(res.error){
         alert(res.msg);
       }else{

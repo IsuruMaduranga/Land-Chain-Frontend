@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { UserService } from '../../services/user.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-registration',
@@ -16,7 +15,7 @@ export class AdminRegistrationComponent implements OnInit {
   email:string;
   password:string;
 
-  constructor(private userService:UserService, private router:Router) { }
+  constructor(private userService:UserService) { }
 
   ngOnInit() {
   }
@@ -33,8 +32,8 @@ export class AdminRegistrationComponent implements OnInit {
 
     this.userService.registerAdmin(userData).subscribe(res=>{
       if(res.token){
-        alert("Done");
-        this.router.navigate(['/adminRegistration']);
+        confirm("done");
+        this.ngOnInit();
       }else{
         alert("Error");
       }
