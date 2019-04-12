@@ -23,6 +23,7 @@ import { MyLandsComponent } from './components/my-lands/my-lands.component';
 import { CreateAdComponent } from './components/create-ad/create-ad.component';
 import { LandHistoryComponent } from './components/land-history/land-history.component';
 import { AdsComponent } from './components/ads/ads.component';
+import { MyAdsComponent } from './components/my-ads/my-ads.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -45,7 +46,8 @@ export function tokenGetter() {
     MyLandsComponent,
     CreateAdComponent,
     LandHistoryComponent,
-    AdsComponent
+    AdsComponent,
+    MyAdsComponent
   ],
   imports: [
     BrowserModule,

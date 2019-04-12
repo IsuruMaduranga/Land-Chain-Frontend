@@ -7,15 +7,15 @@ import { AdService } from 'src/app/services/ad.service';
   styleUrls: ['./ads.component.scss']
 })
 export class AdsComponent implements OnInit {
-  ads:any[];
-  
+  ads: any[];
 
-  constructor(private adService:AdService) { }
+
+
+  constructor(private adService: AdService) { }
 
   ngOnInit() {
-    this.adService.allAds.subscribe(res=>{
-      this.ads=res;
-      console.log(res);
+    this.adService.allAds.subscribe(res => {
+      this.ads = res;
     });
   }
 

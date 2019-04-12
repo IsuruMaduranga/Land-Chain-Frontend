@@ -2,12 +2,13 @@
   <app-login></app-login>
 </div>
 
-<div *ngIf="this.userService.user==='user'">
-  <app-ads></app-ads>
-</div>
+  <div *ngIf="this.userService.user==='user'">
+        <app-ads></app-ads>
+  </div>
+
 
 <div *ngIf="this.userService.user==='admin'">
   <div class="admin">
-      <h1>Admin Panel</h1>
+    <h1>Admin Panel</h1>
   </div>
 </div>
