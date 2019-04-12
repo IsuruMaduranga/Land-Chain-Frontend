@@ -35,7 +35,7 @@ export class AdminRegistrationComponent implements OnInit {
         confirm("done");
         this.ngOnInit();
       }else{
-        alert("Error");
+        alert(res.msg);
       }
     });
   }

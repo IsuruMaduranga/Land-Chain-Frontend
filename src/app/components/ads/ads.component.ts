@@ -9,13 +9,15 @@ import { AdService } from 'src/app/services/ad.service';
 export class AdsComponent implements OnInit {
   ads: any[];
 
-
-
   constructor(private adService: AdService) { }
 
   ngOnInit() {
     this.adService.allAds.subscribe(res => {
-      this.ads = res;
+      if(res.error){
+        alert(res.msg);
+      }else{
+        this.ads = res;
+      }
     });
   }
 

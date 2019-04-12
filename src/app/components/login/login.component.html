@@ -17,26 +17,29 @@
           <mdb-card-body class="px-lg-5 pt-0">
 
             <!-- Form -->
-            <form class="text-center" style="color: #757575;" (ngSubmit)="onSubmit()">
-
+            <form style="color: #757575;" (ngSubmit)="onSubmit()" #f="ngForm">
               <!-- NIC -->
-              <div class="md-form">
-                <input type="text" name="nic" id="materialLoginFormEmail" class="form-control" mdbInput
-                [(ngModel)]="nic">
-                <label for="materialLoginFormEmail">NIC</label>
+              <div class="form-group">
+                <label for="nic">NIC</label>
+                <input type="text" name="nic" id="nic" class="form-control" mdbInput [(ngModel)]="nic" #nic1="ngModel" required pattern="^[0-9]{9}V$">
+                <div class="form-text text-danger" *ngIf="nic1.touched && !nic1.valid">
+                  <small *ngIf="nic1.errors.required">NIC is required!</small>
+                  <small *ngIf="nic1.errors.pattern">Invalid NIC format!</small>
+                </div>
               </div>
 
+
               <!-- Password -->
-              <div class="md-form">
-                <input type="password" name="password" id="materialLoginFormPassword" class="form-control" mdbInput [(ngModel)]="password">
+              <div class="form-group">
                 <label for="materialLoginFormPassword">Password</label>
+                <input type="password" name="password" id="pass" class="form-control" mdbInput [(ngModel)]="password" #pass="ngModel" required pattern="^.{6}">
+                <div class="form-text text-danger" *ngIf="pass.touched && !pass.valid">
+                  <small *ngIf="pass.errors.required">Password is required!</small>
+                  <small *ngIf="pass.errors.pattern">Password should have at least 6 characters!</small>
+                </div>
               </div>
 
               <div class="d-flex justify-content-around">
-                <div>
-                  <!-- Remember me -->
-                  <mdb-checkbox>Remember me</mdb-checkbox>
-                </div>
                 <div>
                   <!-- Forgot password -->
                   <a href="">Forgot password?</a>
@@ -44,7 +47,7 @@
               </div>
 
               <!-- Sign in button -->
-              <button mdbBtn color="info" block="true" class="my-4" type="submit">Sign in</button>
+              <button mdbBtn color="info" block="true" class="my-4" type="submit" [disabled]="!f.valid">Sign in</button>
               <!-- Register -->
 
               <p>Not a member?

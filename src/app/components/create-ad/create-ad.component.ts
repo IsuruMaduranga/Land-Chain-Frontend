@@ -36,7 +36,6 @@ export class CreateAdComponent implements OnInit {
         alert(res.msg);
       }else{
         alert('done');
-        this.router.navigate(['/createAd']);
       }
     });
   }
