@@ -48,6 +48,10 @@
 
       <div *ngIf="this.userService.user">
         <ul class="navbar-nav">
+
+          <h5 class=" nav-link waves-light">{{this.userService.nic}}</h5>
+
+
           <li class="nav-item dropdown" dropdown>
             <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
               <mdb-icon fas icon="user"></mdb-icon><span class="caret"></span>

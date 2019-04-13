@@ -54,4 +54,18 @@ export class UserService {
     return output;
   }
 
+  get nic():any{
+    let output;
+    let token = localStorage.getItem('token');
+    if(!token){
+      output = null;
+    }else if(this.jwtHelper.isTokenExpired()){
+      output=null;
+      localStorage.removeItem('token');
+    }else{
+      output = this.jwtHelper.decodeToken(token).nic;
+    }
+    return output;
+  }
+
 }
