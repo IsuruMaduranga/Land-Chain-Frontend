@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-registration',
@@ -14,8 +15,9 @@ export class AdminRegistrationComponent implements OnInit {
   nic:string;
   email:string;
   password:string;
+  password1:string;
 
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService,private router:Router) { }
 
   ngOnInit() {
   }
@@ -31,11 +33,24 @@ export class AdminRegistrationComponent implements OnInit {
     }
 
     this.userService.registerAdmin(userData).subscribe(res=>{
+      this.firstName = null;
+      this.lastName = null;
+      this.nic = null;
+      this.email = null;
+      this.password =null;
+      this.password1 =null;
+      
       if(res.token){
-        confirm("done");
-        this.ngOnInit();
+        alert("done");
+        this.router.navigate(["/"]);
       }else{
-        alert(res.msg);
+        alert("Server Error!");
+      }
+    },e=>{
+      if (e.error instanceof ProgressEvent) {
+        alert('An error occurred!');
+      } else {
+        alert(e.error.message);
       }
     });
   }
