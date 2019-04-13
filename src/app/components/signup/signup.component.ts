@@ -15,6 +15,7 @@ export class SignupComponent implements OnInit {
   nic:string;
   email:string;
   password:string;
+  password1:string;
 
   constructor(private userService:UserService, private router:Router) { }
 
@@ -32,12 +33,24 @@ export class SignupComponent implements OnInit {
     }
 
     this.userService.signup(userData).subscribe(res=>{
-      console.log(res);
+      this.firstName = null;
+      this.lastName = null;
+      this.nic = null;
+      this.email = null;
+      this.password =null;
+      this.password1 =null;
+      
       if(res.token){
         localStorage.setItem('token',res.token);
         this.router.navigate(['/']);
       }else{
-        alert("Error!");
+        alert("Server Error!");
+      }
+    },e=>{
+      if (e.error instanceof ProgressEvent) {
+        alert('An error occurred!');
+      } else {
+        alert(e.error.message);
       }
     });
   }

@@ -16,59 +16,80 @@
           <mdb-card-body class="px-lg-5 pt-0">
 
             <!-- Form -->
-            <form class="text-center" style="color: #757575;" (ngSubmit)="onSubmit()">
+            <form style="color: #757575;" (ngSubmit)="onSubmit()" #f="ngForm">
 
-              <div class="form-row">
-                <div class="col">
-                  <!-- First name -->
-                  <div class="md-form">
-                    <input type="text" id="materialRegisterFormFirstName" class="form-control" mdbInput [(ngModel)]="firstName" name="firstName">
-                    <label for="materialRegisterFormFirstName">First name</label>
-                  </div>
+              <!-- First name -->
+              <div class="form-group">
+                <label for="fn">First name</label>
+                <input type="text" id="fn" class="form-control" mdbInput [(ngModel)]="firstName" name="firstName"
+                  #fn="ngModel" required pattern="^[A-Za-z]+$">
+                <div class="form-text text-danger" *ngIf="fn.touched && !fn.valid">
+                  <small *ngIf="fn.errors.required">First name is required!</small>
+                  <small *ngIf="fn.errors.pattern">Invalid name!</small>
                 </div>
-                <div class="col">
-                  <!-- Last name -->
-                  <div class="md-form">
-                    <input type="email" id="materialRegisterFormLastName" class="form-control" mdbInput [(ngModel)]="lastName" name="lastName">
-                    <label for="materialRegisterFormLastName">Last name</label>
-                  </div>
+              </div>
+
+              <!-- Last name -->
+              <div class="form-group">
+                <label for="ln">Last name</label>
+                <input type="text" id="ln" class="form-control" mdbInput [(ngModel)]="lastName" name="lastName"
+                  #ln="ngModel" required pattern="^[A-Za-z]+$">
+                <div class="form-text text-danger" *ngIf="ln.touched && !ln.valid">
+                  <small *ngIf="ln.errors.required">Last name is required!</small>
+                  <small *ngIf="ln.errors.pattern">Invalid name!</small>
                 </div>
               </div>
 
               <!-- NIC -->
-              <div class="md-form mt-0">
-                <input type="text" id="materialRegisterFormEmail" class="form-control" mdbInput [(ngModel)]="nic" name="nic">
-                <label for="materialRegisterFormEmail">NIC</label>
+              <div class="form-group">
+                <label for="n">NIC</label>
+                <input type="text" id="n" class="form-control" mdbInput [(ngModel)]="nic" name="nic" #n="ngModel"
+                  required pattern="^[0-9]{9}V$">
+                <div class="form-text text-danger" *ngIf="n.touched && !n.valid">
+                  <small *ngIf="n.errors.required">NIC is required!</small>
+                  <small *ngIf="n.errors.pattern">Invalid NIC!</small>
+                </div>
               </div>
 
-              <!-- E-mail -->
-              <div class="md-form mt-0">
-                <input type="email" id="materialRegisterFormEmail" class="form-control" mdbInput [(ngModel)]="email" name="email">
-                <label for="materialRegisterFormEmail">E-mail</label>
+              <!-- email -->
+              <div class="form-group">
+                <label for="e">Email</label>
+                <input type="email" id="e" class="form-control" mdbInput [(ngModel)]="email" name="email" #e="ngModel"
+                  required pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
+                <div class="form-text text-danger" *ngIf="e.touched && !e.valid">
+                  <small *ngIf="e.errors.required">Email is required!</small>
+                  <small *ngIf="e.errors.pattern">Invalid email!</small>
+                </div>
               </div>
 
-              <!-- Password -->
-              <div class="md-form">
-                <input type="password" id="materialRegisterFormPassword" class="form-control"
-                  aria-describedby="materialRegisterFormPasswordHelpBlock" mdbInput [(ngModel)]="password" name="password">
-                <label for="materialRegisterFormPassword">Password</label>
-                <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-                  At least 8 characters and 1 digit
-                </small>
+              <!-- Pasword -->
+              <div class="form-group">
+                <label for="p">Password</label>
+                <input type="password" id="p" class="form-control" mdbInput [(ngModel)]="password" name="password"
+                  #p="ngModel" required pattern="^.{6,}">
+                <div class="form-text text-danger" *ngIf="p.touched && !p.valid">
+                  <small *ngIf="p.errors.required">Password is required!</small>
+                  <small *ngIf="p.errors.pattern">Password should have at least 6 characters!</small>
+                </div>
               </div>
 
+              <!-- Pasword -->
+              <div class="form-group">
+                <label for="p1">Password(again)</label>
+                <input type="password" id="p1" class="form-control" mdbInput [(ngModel)]="password1" name="password1"
+                  #p1="ngModel" required pattern="^.{6,}" [disabled]="!p.valid">
+                <div class="form-text text-danger" *ngIf="p1.touched && !p1.valid">
+                  <small *ngIf="p1.errors.required">Password is required!</small>
+                  <small *ngIf="p1.errors.pattern">Password should have at least 6 characters!</small>
+                </div>
+                <div class="form-text text-danger" *ngIf="p1.valid">
+                  <small *ngIf="password!==password1">Passwords are not equal!</small>
+                </div>
+              </div>
 
               <!-- Sign up button -->
-              <button mdbBtn color="info" outline="true" rounded="true" block="true" class="my-4 waves-effect z-depth-0"
-                mdbWavesEffect type="submit">Sign Up</button>
-
-              <hr>
-
-              <!-- Terms of service -->
-              <p>By clicking
-                <em>Sign up</em> you agree to our
-                <a href="" target="_blank">terms of service</a> and
-                <a href="" target="_blank">terms of service</a>. </p>
+              <button mdbBtn color="info" block="true" class="my-4" type="submit"
+                [disabled]="!f.valid || password!==password1">Sign Up</button>
 
             </form>
             <!-- Form -->
