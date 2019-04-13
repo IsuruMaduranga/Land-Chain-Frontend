@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpHeaders,HttpResponse } from '@angular/common/http';
+import { HttpClient,HttpHeaders,HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { LoginData } from '../models/LoginData';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({

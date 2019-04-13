@@ -18,7 +18,13 @@ export class NavbarComponent implements OnInit {
     this.userService.logout().subscribe(res=>{
       localStorage.removeItem('token');
       this.router.navigate(['/']);
-    });
+    }),e=>{
+      if (e.error instanceof ProgressEvent) {
+        alert('An error occurred!');
+      } else {
+        alert(e.error.message);
+      }
+    };
   }
 
 }

@@ -22,12 +22,18 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     const logindata = new LoginData(this.nic,this.password);
-    this.userService.auth(logindata).subscribe(res=>{
-      if(res.token){
-        localStorage.setItem('token',res.token);
+    this.userService.auth(logindata).subscribe(data=>{
+      if(data.token){
+        localStorage.setItem('token',data.token);
         this.router.navigate(['/']);
       }else{
-        alert('Invalid credentials');
+        alert("Server error");
+      }
+    },e=>{
+      if (e.error instanceof ProgressEvent) {
+        alert('An error occurred!');
+      } else {
+        alert(e.error.message);
       }
     });
   }

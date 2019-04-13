@@ -32,7 +32,7 @@
               <!-- Password -->
               <div class="form-group">
                 <label for="materialLoginFormPassword">Password</label>
-                <input type="password" name="password" id="pass" class="form-control" mdbInput [(ngModel)]="password" #pass="ngModel" required pattern="^.{6}">
+                <input type="password" name="password" id="pass" class="form-control" mdbInput [(ngModel)]="password" #pass="ngModel" required pattern="^.{6,}">
                 <div class="form-text text-danger" *ngIf="pass.touched && !pass.valid">
                   <small *ngIf="pass.errors.required">Password is required!</small>
                   <small *ngIf="pass.errors.pattern">Password should have at least 6 characters!</small>

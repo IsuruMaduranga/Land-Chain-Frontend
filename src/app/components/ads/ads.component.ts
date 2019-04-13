@@ -12,11 +12,13 @@ export class AdsComponent implements OnInit {
   constructor(private adService: AdService) { }
 
   ngOnInit() {
-    this.adService.allAds.subscribe(res => {
-      if(res.error){
-        alert(res.msg);
-      }else{
-        this.ads = res;
+    this.adService.allAds.subscribe(data => {
+      this.ads = data;
+    }, e => {
+      if (e.error instanceof ProgressEvent) {
+        alert('An error occurred!');
+      } else {
+        alert(e.error.message);
       }
     });
   }

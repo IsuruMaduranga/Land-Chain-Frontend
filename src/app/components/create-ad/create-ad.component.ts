@@ -32,15 +32,17 @@ export class CreateAdComponent implements OnInit {
     }
 
     this.adService.post(adData).subscribe(res=>{
-      if(res.error){
-        alert(res.msg);
-      }else{
         alert('done');
         this.landId = null;
         this.size = null;
         this.phone = null;
         this.price = null;
         this.city = null;
+    },e=>{
+      if (e.error instanceof ProgressEvent) {
+        alert('An error occurred!');
+      } else {
+        alert(e.error.message);
       }
     });
   }
