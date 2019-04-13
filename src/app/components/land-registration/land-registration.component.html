@@ -1,56 +1,67 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
-        <div class="crd">
-          <!-- Material form login -->
-          <mdb-card>
-  
-            <mdb-card-header class="info-color white-text text-center py-4">
-              <h5>
-                <strong>Land Registration</strong>
-              </h5>
-            </mdb-card-header>
-  
-  
-            <!--Card content-->
-            <mdb-card-body class="px-lg-5 pt-0">
-  
-              <!-- Form -->
-              <form class="text-center" style="color: #757575;" (ngSubmit)="onSubmit()">
-  
-                <!-- Land id -->
-                <div class="md-form">
-                  <input type="text" name="nic" id="materialLoginFormEmail" class="form-control" mdbInput
-                  [(ngModel)]="landId">
-                  <label for="materialLoginFormEmail">Land id</label>
-                </div>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="crd">
+        <!-- Material form login -->
+        <mdb-card>
 
-                <!-- Owner NIC -->
-                <div class="md-form">
-                    <input type="text" name="nic" id="materialLoginFormEmail" class="form-control" mdbInput
-                    [(ngModel)]="ownerNIC">
-                    <label for="materialLoginFormEmail">Owner NIC</label>
+          <mdb-card-header class="info-color white-text text-center py-4">
+            <h5>
+              <strong>Land Registration</strong>
+            </h5>
+          </mdb-card-header>
+
+
+          <!--Card content-->
+          <mdb-card-body class="px-lg-5 pt-0">
+
+            <!-- Form -->
+            <form style="color: #757575;" (ngSubmit)="onSubmit()" #f="ngForm">
+
+              <!-- Land id -->
+              <div class="form-group">
+                <label for="fn">Land ID</label>
+                <input type="text" id="fn" class="form-control" mdbInput [(ngModel)]="landId" name="landId"
+                  #fn="ngModel" required pattern="^[0-9]+$">
+                <div class="form-text text-danger" *ngIf="fn.touched && !fn.valid">
+                  <small *ngIf="fn.errors.required">Land ID is required!</small>
+                  <small *ngIf="fn.errors.pattern">Invalid ID!</small>
                 </div>
-  
-                <!-- Registration button -->
-                <button mdbBtn color="info" block="true" class="my-4" type="submit">Register</button>
-                <!-- Register -->
-                <p>
-                  Register land in the blockchain
-                </p>
-  
-              </form>
-              <!-- Form -->
-  
-            </mdb-card-body>
-  
-          </mdb-card>
-          <!-- Material form login -->
-  
-        </div>
-  
+              </div>
+
+
+              <!-- Owner NIC -->
+              <div class="form-group">
+                <label for="ln">Owner NIC</label>
+                <input type="text" id="ln" class="form-control" mdbInput [(ngModel)]="ownerNIC" name="ownerNIC"
+                  #ln="ngModel" required pattern="^[0-9]{9}V$">
+                <div class="form-text text-danger" *ngIf="ln.touched && !ln.valid">
+                  <small *ngIf="ln.errors.required">Owner NIC is required!</small>
+                  <small *ngIf="ln.errors.pattern">Invalid NIC!</small>
+                </div>
+              </div>
+
+
+              <!-- Registration button -->
+              <button mdbBtn color="info" block="true" class="my-4" type="submit"
+                [disabled]="!f.valid">Register</button>
+              <!-- Register -->
+              <p>
+                Register land in the blockchain
+              </p>
+
+            </form>
+            <!-- Form -->
+
+          </mdb-card-body>
+
+        </mdb-card>
+        <!-- Material form login -->
+
       </div>
-      <div class="col-md-3"></div>
+
     </div>
+    <div class="col-md-3"></div>
   </div>
+</div>

@@ -9,24 +9,28 @@ import { ChangeOwnerService } from '../../services/change-owner.service';
 })
 export class ChangeOwnerComponent implements OnInit {
 
-  constructor(private coService:ChangeOwnerService) { }
-  landId:String;
-  newOwnerId:String;
+  constructor(private coService: ChangeOwnerService) { }
+  landId: String;
+  newOwnerId: String;
 
   ngOnInit() {
   }
 
-  onSubmit(){
+  onSubmit() {
     const data = {
-      landId:this.landId,
-      newOwnerId:this.newOwnerId
+      landId: this.landId,
+      newOwnerId: this.newOwnerId
     }
 
-    this.coService.change(data).subscribe(res=>{
-      if(res.error){
-        alert("Error!");
-      }else{
-        alert("done");
+    this.coService.change(data).subscribe(res => {
+      this.landId = null;
+      this.newOwnerId = null;
+      alert("done");
+    }, e => {
+      if (e.error instanceof ProgressEvent) {
+        alert('An error occurred!');
+      } else {
+        alert(e.error.message);
       }
     });
   }

@@ -3,14 +3,15 @@
 
     <div class="col-md-3"></div>
     <div class="col-md-6">
-      <div>
-        <form class="form-inline md-form mr-auto mb-4" (ngSubmit)="onSubmit()">
-          <input class=" form-control mr-sm-2" type="text" placeholder="Land-ID" aria-label="Land-ID"
-            [(ngModel)]="landId" name="landId">
-          <button mdbBtn size="sm" color="blue" outline="true" rounded="true" class="my-0 waves-light" mdbWavesEffect
-            type="submit">Get History</button>
-        </form>
-      </div>
+
+      <form class="form-inline" (ngSubmit)="onSubmit()">
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="id" class="sr-only">Password</label>
+          <input type="text" class="form-control" id="inputPassword2" placeholder="ID" [(ngModel)]="landId" name="landId">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Get History</button>
+      </form>
+
     </div>
     <div class="col-md-3"></div>
   </div>
@@ -46,11 +47,11 @@
       </ul>
 
       <div *ngIf="currentOwner">
-          <div class="alert alert-danger" role="alert">
-            Current owner is {{currentOwner}}
-            <br/>
-            End of History!
-          </div>
+        <div class="alert alert-danger" role="alert">
+          Current owner is {{currentOwner}}
+          <br />
+          End of History!
+        </div>
       </div>
 
     </div>

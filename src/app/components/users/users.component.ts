@@ -16,6 +16,12 @@ export class UsersComponent implements OnInit {
     this.bService.getUsers().subscribe(res=>{
       this.users=res;
       console.log(res);
+    },e => {
+      if (e.error instanceof ProgressEvent) {
+        alert('An error occurred!');
+      } else {
+        alert(e.error.message);
+      }
     });
   }
 

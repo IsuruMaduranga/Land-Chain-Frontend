@@ -15,7 +15,12 @@ export class LandsComponent implements OnInit {
   ngOnInit() {
     this.bService.getLands().subscribe(res=>{
       this.lands=res;
-      console.log(res);
+    },e => {
+      if (e.error instanceof ProgressEvent) {
+        alert('An error occurred!');
+      } else {
+        alert(e.error.message);
+      }
     });
   }
 
