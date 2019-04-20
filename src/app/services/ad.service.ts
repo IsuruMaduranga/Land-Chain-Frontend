@@ -16,12 +16,12 @@ export class AdService {
 
   constructor(private http:HttpClient) { }
 
-  get allAds():Observable<any>{
+  getAllAds():Observable<any>{
     let url = 'http://localhost:4000/api/ads';
     return this.http.get(url,httpOptions);
   }
 
-  get myAds():Observable<any>{
+  getMyAds():Observable<any>{
     let url = 'http://localhost:4000/api/ads/my';
     return this.http.get(url,httpOptions);
   }

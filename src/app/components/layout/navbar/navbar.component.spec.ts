@@ -44,7 +44,17 @@ describe('NavbarComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should remove token when logout and redirect to home page', () => {
+    const router = TestBed.get(Router);
+    localStorage.setItem('token',"enrvjnjfv");
+    component.logout();
+    expect(localStorage.getItem('token')).toBeNull();
+    expect(router.navigate).toHaveBeenCalledWith(['/']);
+    localStorage.removeItem('token');
+  });
+
 });

@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
 
+import { empty } from 'rxjs';
+
 class MockRouter {
   navigate = jasmine.createSpy('navigate');
 }
@@ -48,4 +50,91 @@ describe('SignupComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it(`should disable submit button if first name is invalid`, () => {
+    const compiled = fixture.debugElement.nativeElement;
+
+    component.firstName = "knd55555";
+    component.lastName = "fnjknb";
+    component.nic = "951863149V";
+    component.email = "a@b.com";
+    component.password = "123456";
+
+    expect(compiled.querySelector('button').disabled).toBeFalsy();
+
+  });
+
+
+  it(`should disable submit button if last name is invalid`, () => {
+    const compiled = fixture.debugElement.nativeElement;
+
+    component.firstName = "knd";
+    component.lastName = "fnjknb5y897467";
+    component.nic = "951863149V";
+    component.email = "a@b.com";
+    component.password = "123456";
+
+    expect(compiled.querySelector('button').disabled).toBeFalsy();
+
+  });
+
+
+  it(`should disable submit button if nic is invalid`, () => {
+    const compiled = fixture.debugElement.nativeElement;
+
+    component.firstName = "knd55555";
+    component.lastName = "fnjknb";
+    component.nic = "9518631";
+    component.email = "a@b.com";
+    component.password = "123456";
+
+    expect(compiled.querySelector('button').disabled).toBeFalsy();
+
+  });
+
+
+  it(`should disable submit button if email is invalid`, () => {
+    const compiled = fixture.debugElement.nativeElement;
+
+    component.firstName = "kndrr";
+    component.lastName = "fnjknb";
+    component.nic = "951863149V";
+    component.email = "ab.comkkk";
+    component.password = "123456";
+
+    expect(compiled.querySelector('button').disabled).toBeFalsy();
+
+  });
+
+
+  it(`should disable submit button if password is invalid`, () => {
+    const compiled = fixture.debugElement.nativeElement;
+
+    component.firstName = "knd";
+    component.lastName = "fnjknb";
+    component.nic = "951863149V";
+    component.email = "a@b.com";
+    component.password = "12";
+
+    expect(compiled.querySelector('button').disabled).toBeFalsy();
+
+  });
+
+  it(`should enable submit button if all inputs are valid`, () => {
+    component.firstName = "knd";
+    component.lastName = "fnjknb";
+    component.nic = "951863149V";
+    component.email = "a@b.com";
+    component.password = "123456";
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('button').disabled).toBeFalsy();
+  });
+
+  it(`should call the service when submitted`, () => {
+    const userService = TestBed.get(UserService);
+    const spy = spyOn(userService, 'signup').and.callFake(data => {
+      return empty();
+    });
+  });
+
 });

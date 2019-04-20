@@ -130,7 +130,7 @@ describe('AdminRegistrationComponent', () => {
 
   it(`should call the service when submitted`, () => {
     userService = TestBed.get(UserService);
-    const spy = spyOn(userService, 'auth').and.callFake(data => {
+    const spy = spyOn(userService, 'registerAdmin').and.callFake(data => {
       return empty();
     });
 
