@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
 
   nic:string;
   password:string;
+  f:any;
 
   constructor(private userService:UserService, private router:Router) { }
 
