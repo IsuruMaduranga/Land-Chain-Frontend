@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChangeOwnerComponent } from './change-owner.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BlockchainService } from 'src/app/services/blockchain.service';
+import { FormsModule } from '@angular/forms';
 
 describe('ChangeOwnerComponent', () => {
   let component: ChangeOwnerComponent;
@@ -8,7 +11,9 @@ describe('ChangeOwnerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChangeOwnerComponent ]
+      imports: [HttpClientModule,FormsModule],
+      declarations: [ ChangeOwnerComponent ],
+      providers: [ BlockchainService]
     })
     .compileComponents();
   }));

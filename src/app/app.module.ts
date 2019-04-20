@@ -3,13 +3,12 @@ import { NgModule } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { JwtModule } from '@auth0/angular-jwt';
+import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
 import { NgFlashMessagesModule } from 'ng-flash-messages';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/layout/navbar/navbar.component';
-import { FooterComponent } from './components/layout/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { SignupComponent } from './components/signup/signup.component';
@@ -32,7 +31,6 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent,
     LoginComponent,
     HomeComponent,
     SignupComponent,
@@ -55,7 +53,7 @@ export function tokenGetter() {
     FormsModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: tokenGetter,
+        tokenGetter,
         headerName: 'x-auth',
         whitelistedDomains: ['localhost:4000'],
         blacklistedRoutes: ['example.com/examplebadroute/'],
@@ -64,7 +62,7 @@ export function tokenGetter() {
     }),
     NgFlashMessagesModule.forRoot()
   ],
-  providers: [],
+  providers: [JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LandsComponent } from './lands.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BlockchainService } from 'src/app/services/blockchain.service';
 
 describe('LandsComponent', () => {
   let component: LandsComponent;
@@ -8,9 +10,11 @@ describe('LandsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LandsComponent ]
+      imports: [HttpClientModule],
+      declarations: [LandsComponent],
+      providers: [BlockchainService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

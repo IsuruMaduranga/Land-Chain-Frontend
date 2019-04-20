@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UsersComponent } from './users.component';
+import { BlockchainService } from 'src/app/services/blockchain.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('UsersComponent', () => {
   let component: UsersComponent;
@@ -8,7 +10,9 @@ describe('UsersComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UsersComponent ]
+      imports: [HttpClientModule],
+      declarations: [ UsersComponent ],
+      providers: [BlockchainService ]
     })
     .compileComponents();
   }));

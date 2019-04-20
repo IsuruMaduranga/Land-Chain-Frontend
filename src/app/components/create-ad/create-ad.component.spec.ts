@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateAdComponent } from './create-ad.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AdService } from 'src/app/services/ad.service';
+import { FormsModule } from '@angular/forms';
 
 describe('CreateAdComponent', () => {
   let component: CreateAdComponent;
@@ -8,7 +11,9 @@ describe('CreateAdComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateAdComponent ]
+      imports: [HttpClientModule,FormsModule],
+      declarations: [ CreateAdComponent ],
+      providers: [AdService]
     })
     .compileComponents();
   }));

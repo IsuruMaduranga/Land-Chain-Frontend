@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AdService } from 'src/app/services/ad.service';
 
 @Component({
@@ -16,7 +15,7 @@ export class CreateAdComponent implements OnInit {
   city:String;
 
 
-  constructor(private adService:AdService, private router:Router) { }
+  constructor(private adService:AdService) { }
 
   ngOnInit() {
   }

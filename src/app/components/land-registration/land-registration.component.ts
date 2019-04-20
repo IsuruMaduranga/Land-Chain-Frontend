@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { LandRegistrationService } from '../../services/land-registration.service';
+import { BlockchainService } from 'src/app/services/blockchain.service';
 
 @Component({
   selector: 'app-land-registration',
@@ -11,7 +11,7 @@ export class LandRegistrationComponent implements OnInit {
   landId: string;
   ownerNIC: string;
 
-  constructor(private lrService: LandRegistrationService) { }
+  constructor(private bService: BlockchainService) { }
 
   ngOnInit() {
   }
@@ -22,7 +22,7 @@ export class LandRegistrationComponent implements OnInit {
       ownerId: this.ownerNIC,
     }
 
-    this.lrService.register(landData).subscribe(res => {
+    this.bService.registerLand(landData).subscribe(res => {
       this.landId = null;
       this.ownerNIC = null;
       alert("done");

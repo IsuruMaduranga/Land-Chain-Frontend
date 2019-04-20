@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ChangeOwnerService } from '../../services/change-owner.service';
+import { BlockchainService } from 'src/app/services/blockchain.service';
 
 @Component({
   selector: 'app-change-owner',
@@ -9,7 +9,7 @@ import { ChangeOwnerService } from '../../services/change-owner.service';
 })
 export class ChangeOwnerComponent implements OnInit {
 
-  constructor(private coService: ChangeOwnerService) { }
+  constructor(private bService: BlockchainService) { }
   landId: String;
   newOwnerId: String;
 
@@ -22,7 +22,7 @@ export class ChangeOwnerComponent implements OnInit {
       newOwnerId: this.newOwnerId
     }
 
-    this.coService.change(data).subscribe(res => {
+    this.bService.changeOwner(data).subscribe(res => {
       this.landId = null;
       this.newOwnerId = null;
       alert("done");

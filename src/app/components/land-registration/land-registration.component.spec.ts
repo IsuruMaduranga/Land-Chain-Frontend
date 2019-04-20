@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LandRegistrationComponent } from './land-registration.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BlockchainService } from 'src/app/services/blockchain.service';
+import { FormsModule } from '@angular/forms';
 
 describe('LandRegistrationComponent', () => {
   let component: LandRegistrationComponent;
@@ -8,9 +11,11 @@ describe('LandRegistrationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LandRegistrationComponent ]
+      imports: [HttpClientModule,FormsModule],
+      declarations: [LandRegistrationComponent],
+      providers: [BlockchainService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
