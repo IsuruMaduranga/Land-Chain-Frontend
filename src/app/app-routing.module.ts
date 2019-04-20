@@ -14,6 +14,7 @@ import { MyLandsComponent } from './components/my-lands/my-lands.component';
 import { CreateAdComponent } from './components/create-ad/create-ad.component';
 import { LandHistoryComponent } from './components/land-history/land-history.component';
 import { MyAdsComponent } from './components/my-ads/my-ads.component';
+import { DivideLandComponent } from './components/divide-land/divide-land.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path:'createAd',component:CreateAdComponent,canActivate: [AuthGuard],data: { expectedRole: ['user']}},
   {path:'landHistory',component:LandHistoryComponent,canActivate: [AuthGuard],data: { expectedRole: ['admin','user']}},
   {path:'myAds',component:MyAdsComponent,canActivate: [AuthGuard],data: { expectedRole: ['admin','user']}},
+  {path:'divideLand',component:DivideLandComponent,canActivate: [AuthGuard],data: { expectedRole: ['admin']}},
   { path: '**', component: HomeComponent }
 ];
 

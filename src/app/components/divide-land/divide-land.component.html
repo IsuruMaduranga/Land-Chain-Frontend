@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card">
+       
+
+          <div class="card-header text-center bg-info">
+            <h5 class="text-light">
+              <strong>Sign In</strong>
+            </h5>
+          </div>
+
+
+          <!--Card content-->
+          <div class="card-body">
+
+            <!-- Form -->
+            <form style="color: #757575;" (ngSubmit)="onSubmit()" #f="ngForm">
+
+              <!-- Land ID -->
+              <div class="form-group">
+                <label for="id">Land Id</label>
+                <input type="text" name="id" id="id" class="form-control" mdbInput [(ngModel)]="id" #id1="ngModel" required pattern="^[0-9]+$">
+                <div class="form-text text-danger" *ngIf="id1.touched && !id1.valid">
+                  <small *ngIf="nic1.errors.required">Land id is required!</small>
+                  <small *ngIf="nic1.errors.pattern">Invalid id!</small>
+                </div>
+              </div>
+
+
+              <!-- New Ids-->
+              <div class="form-group">
+                <label for="materialLoginFormPassword">Enter new land id's seperated by comma's</label>
+                <input type="text" name="newIds" id="pass" class="form-control" mdbInput [(ngModel)]="newIds" #pass="ngModel" required pattern="^([0-9]+,[0-9]+)(,[0-9]+)*">
+                <div class="form-text text-danger" *ngIf="pass.touched && !pass.valid">
+                  <small *ngIf="pass.errors.required">New Id's are required!</small>
+                  <small *ngIf="pass.errors.pattern">Invalid input!</small>
+                </div>
+              </div>
+
+              <!-- Sign in button -->
+              <button mdbBtn color="info" block="true" class="my-4" type="submit" [disabled]="!f.valid">Divide</button>
+              <!-- Register -->
+
+            </form>
+            <!-- Form -->
+
+          </div>
+
+   
+
+      </div>
+
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>

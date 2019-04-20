@@ -55,6 +55,12 @@ export class BlockchainService {
     let data=JSON.stringify(userData);
     return this.http.post(url,data,httpOptions);
   }
+
+  divideLand(Data:any):Observable<any>{
+    let url = 'http://localhost:4000/api/blockchain/divideLand';
+    let data=JSON.stringify(Data);
+    return this.http.post(url,data,httpOptions);
+  }
   
 
 }
