@@ -126,6 +126,8 @@ describe('LoginComponent', () => {
 
     component.onSubmit();
     expect(router.navigate).toHaveBeenCalledWith(['/']);
+
+    localStorage.removeItem('token');
   });
 
 });
