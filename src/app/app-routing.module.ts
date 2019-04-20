@@ -5,7 +5,6 @@ import { AuthGuard } from './auth.guard';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
 import { LandRegistrationComponent } from './components/land-registration/land-registration.component';
 import { UsersComponent } from './components/users/users.component';
 import { LandsComponent } from './components/lands/lands.component';
@@ -21,7 +20,6 @@ const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
-  {path:'userRegistration',component:UserRegistrationComponent,canActivate: [AuthGuard],data: { expectedRole: ['admin']} },
   {path:'landRegistration',component:LandRegistrationComponent,canActivate: [AuthGuard],data: { expectedRole: ['admin']}},
   {path:'users',component:UsersComponent,canActivate: [AuthGuard],data: { expectedRole: ['admin']}},
   {path:'lands',component:LandsComponent,canActivate: [AuthGuard],data: { expectedRole: ['admin','user']}},

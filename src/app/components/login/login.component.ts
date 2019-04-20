@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { LoginData } from '../../models/LoginData';
-
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 
@@ -21,7 +19,11 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    const logindata = new LoginData(this.nic,this.password);
+    const logindata = {
+      nic:this.nic,
+      password:this.password
+    };
+
     this.userService.auth(logindata).subscribe(data=>{
       if(data.token){
         localStorage.setItem('token',data.token);

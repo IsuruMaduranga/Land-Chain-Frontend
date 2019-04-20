@@ -13,7 +13,6 @@ import { FooterComponent } from './components/layout/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
 import { LandRegistrationComponent } from './components/land-registration/land-registration.component';
 import { UsersComponent } from './components/users/users.component';
 import { LandsComponent } from './components/lands/lands.component';
@@ -37,7 +36,6 @@ export function tokenGetter() {
     LoginComponent,
     HomeComponent,
     SignupComponent,
-    UserRegistrationComponent,
     LandRegistrationComponent,
     UsersComponent,
     LandsComponent,

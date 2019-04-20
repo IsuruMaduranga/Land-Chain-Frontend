@@ -8,14 +8,14 @@ import { BlockchainService } from '../../services/blockchain.service';
   styleUrls: ['./lands.component.scss']
 })
 export class LandsComponent implements OnInit {
-  lands:any[]
+  lands: any[];
 
-  constructor(private bService:BlockchainService) { }
+  constructor(private bService: BlockchainService) { }
 
   ngOnInit() {
-    this.bService.getLands().subscribe(res=>{
-      this.lands=res;
-    },e => {
+    this.bService.getLands().subscribe(res => {
+      this.lands = res;
+    }, e => {
       if (e.error instanceof ProgressEvent) {
         alert('An error occurred!');
       } else {

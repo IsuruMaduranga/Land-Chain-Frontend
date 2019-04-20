@@ -9,22 +9,14 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private userService:UserService,private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  logout(){
-    this.userService.logout().subscribe(res=>{
-      localStorage.removeItem('token');
-      this.router.navigate(['/']);
-    }),e=>{
-      if (e.error instanceof ProgressEvent) {
-        alert('An error occurred!');
-      } else {
-        alert(e.error.message);
-      }
-    };
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/']);
   }
 
 }
