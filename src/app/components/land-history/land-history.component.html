@@ -54,6 +54,15 @@
         </div>
       </div>
 
+      <div *ngIf="childLands">
+        <div class="alert alert-danger" role="alert">
+          This land has divided into following lands.
+          <div *ngFor="let id of childLands">
+            Land ID --> {{id}}
+          </div> 
+        </div>
+      </div>
+
     </div>
 
     <div class="col-md-3"></div>

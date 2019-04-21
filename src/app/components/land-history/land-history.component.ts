@@ -14,6 +14,7 @@ export class LandHistoryComponent implements OnInit {
   lands: any[];
   previousLand: String;
   currentOwner: String;
+  childLands:String[];
 
   constructor(private bService: BlockchainService, private ngf: NgFlashMessageService) { }
 
@@ -29,6 +30,7 @@ export class LandHistoryComponent implements OnInit {
       this.previousLand = null;
       this.lands = null;
       this.currentOwner = null;
+      this.childLands = null;
 
       this.lands = res;
       if (this.lands[0].previousLand) {
@@ -36,6 +38,9 @@ export class LandHistoryComponent implements OnInit {
       }
       if (this.lands[this.lands.length - 1].status === "VALID") {
         this.currentOwner = this.lands[this.lands.length - 1].owner.split("#")[1];
+      }
+      if (this.lands[this.lands.length - 1].childLands) {
+        this.childLands = this.lands[this.lands.length - 1].childLands;
       }
 
     }, e => {
