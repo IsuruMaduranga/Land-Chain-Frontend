@@ -57,7 +57,7 @@ export function tokenGetter() {
       config: {
         tokenGetter,
         headerName: 'x-auth',
-        whitelistedDomains: ['localhost:4000'],
+        whitelistedDomains: ['localhost:4000','134.209.148.30'],
         blacklistedRoutes: ['example.com/examplebadroute/'],
         authScheme: ''
       }
