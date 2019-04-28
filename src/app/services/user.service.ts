@@ -4,6 +4,9 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { Observable } from 'rxjs';
 
+import { environment } from './../../environments/environment';
+const api = environment.api;
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
@@ -18,17 +21,17 @@ export class UserService {
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
 
   auth(loginData: any): Observable<any> {
-    let url = 'http://localhost:4000/api/users/login';
+    let url = `${api}/users/login`;
     return this.http.post(url, JSON.stringify(loginData), httpOptions);
   }
 
   signup(userData: any): Observable<any> {
-    let url = 'http://localhost:4000/api/users/signup';
+    let url = `${api}/users/signup`;
     return this.http.post(url, JSON.stringify(userData), httpOptions);
   }
 
   registerAdmin(userData: any): Observable<any> {
-    let url = 'http://localhost:4000/api/users/registerAdmin';
+    let url = `${api}/users/registerAdmin`;
     return this.http.post(url, JSON.stringify(userData), httpOptions);
   }
 
