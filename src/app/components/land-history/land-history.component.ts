@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlockchainService } from 'src/app/services/blockchain.service';
 
-import { NgFlashMessageService } from 'ng-flash-messages';
-import { LandsComponent } from '../lands/lands.component';
-
 @Component({
   selector: 'app-land-history',
   templateUrl: './land-history.component.html',
@@ -16,7 +13,7 @@ export class LandHistoryComponent implements OnInit {
   currentOwner: String;
   childLands:String[];
 
-  constructor(private bService: BlockchainService, private ngf: NgFlashMessageService) { }
+  constructor(private bService: BlockchainService) { }
 
   ngOnInit() {
   }
@@ -50,12 +47,7 @@ export class LandHistoryComponent implements OnInit {
       if (e.error instanceof ProgressEvent) {
         alert('An error occurred!');
       } else {
-        this.ngf.showFlashMessage({
-          messages: ["History not available!"],
-          dismissible: true,
-          timeout: 2000,
-          type: 'danger'
-        });
+        alert('History not available!');
       }
     });
   }
